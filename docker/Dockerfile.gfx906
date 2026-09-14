@@ -1,0 +1,29 @@
+# Dockerfile for AMD Instinct MI50 (gfx906) vLLM Runtime
+FROM rocm/dev-ubuntu-22.04:6.2-complete
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV HSA_OVERRIDE_GFX_VERSION=9.0.6
+ENV PYTORCH_ROCM_ARCH=gfx906
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    python3-pip \
+    python3-dev \
+    build-essential \
+    cmake \
+    libnuma-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN pip3 install --upgrade pip setuptools wheel ninja
+
+# Install PyTorch built with ROCm support
+RUN pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.2
+
+# Build and install vLLM for gfx906
+RUN git clone --depth 1 https://github.com/vllm-project/vllm.git /opt/vllm && \
+    cd /opt/vllm && \
+    pip3 install -r requirements-rocm.txt && \
+    python3 setup.py develop
+
+WORKDIR /workspace
+CMD ["/bin/bash"]
