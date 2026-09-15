@@ -4,8 +4,14 @@
 [![Architecture: gfx906](https://img.shields.io/badge/Architecture-gfx906%20(Vega%2020)-purple.svg)]()
 [![Hardware: 32GB HBM2](https://img.shields.io/badge/Hardware-32GB%20HBM2%20%40%201024%20GB%2Fs-red.svg)]()
 [![vLLM: Continuous Batching](https://img.shields.io/badge/vLLM-Continuous%20Batching-green.svg)]()
+[![Engineering Log](https://img.shields.io/badge/Engineering%20Log-Portfolio%20Deep%20Dive-blueviolet.svg)](https://frieddeli.github.io/Portfolio-Website/#/blog/b4)
 
 High-throughput continuous-batching inference runtime for the retired **AMD Instinct MI50** (32GB HBM2, `gfx906`, Vega 20) under modern ROCm in unprivileged Proxmox VE LXC containers.
+
+> [!NOTE]
+> **Companion Engineering Log & Architecture Deep Dive:**  
+> A detailed technical writeup detailing the LXC cgroup passthrough mechanics, rocBLAS GEMM kernel compilation, and continuous batching benchmarks is documented on my personal portfolio blog:
+> - [Build Log MSN-013: Deploying vLLM on AMD Instinct MI50: 422 tok/s on Retired Enterprise Silicon](https://frieddeli.github.io/Portfolio-Website/#/blog/b4)
 
 ---
 
@@ -214,4 +220,4 @@ To run large models at long context lengths without buying expensive enterprise 
 ## 8. License & Attribution
 
 Licensed under the [Apache License, Version 2.0](LICENSE).  
-Developed by Ray Shao (Nanyang Technological University, Singapore).
+Developed by Ray Shao (Nanyang Technological University, Singapore) · [Portfolio & Engineering Logs](https://frieddeli.github.io/Portfolio-Website/).
